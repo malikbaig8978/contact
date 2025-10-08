@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Page</title>
+
+  <style>
+    main.main {
+      padding-top: 80px;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(20, 20, 20, 0.725);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(173, 216, 230, 0.2);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .C-logo {
+      max-width: 180px;
+      height: auto;
+      display: block;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      margin-right: 0;
+      color: #d3d3d3;
+      text-decoration: none;
+      font-size: large;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px 16px;
+      transition: color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .nav-links a:hover {
+      color: #add8e6;
+      background: rgba(173, 216, 230, 0.1);
+      box-shadow: 0 0 8px rgba(173, 216, 230, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: left;
+        padding: 8px 12px;
+      }
+    }
+
+    .head-office {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .head-office h1 {
+      font-size: 2.5rem;
+      color: #1a365d;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-align: center;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .section-Head-office {
+      padding: 60px 20px 25px 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      position: relative;
+    }
+
+    .section-Head-office::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle at 25% 25%,
+          rgba(59, 130, 246, 0.05) 0%,
+          transparent 50%),
+        radial-gradient(circle at 75% 75%,
+          rgba(16, 185, 129, 0.05) 0%,
+          transparent 50%);
+      pointer-events: none;
+    }
+
+    .head-office-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .head-office-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06),
+        0 4px 8px rgba(0, 0, 0, 0.04);
+      width: 420px;
+      min-height: 400px;
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
+      position: relative;
+      flex: 0 0 420px;
+    }
+
+    .head-office-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+
+    .head-office-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08),
+        0 8px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .telangana-office::before {
+      background: #64748b;
+    }
+
+    .andhra-office::before {
+      background: #64748b;
+    }
+
+    .office-header {
+      padding: 30px 30px 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-bottom: 1px solid #e2e8f0;
+      text-align: center;
+      position: relative;
+    }
+
+    .office-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #64748b;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 15px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(100, 116, 139, 0.2);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .andhra-office .office-badge {
+      background: #64748b;
+      box-shadow: 0 2px 6px rgba(100, 116, 139, 0.2);
+    }
+
+    .office-header h3 {
+      font-size: 1.8rem;
+      color: #1a365d;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.5px;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .office-subtitle {
+      color: #64748b;
+      font-size: 0.95rem;
+      font-weight: 500;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .office-content {
+      padding: 5px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 5px;
+      padding: 5px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border-left: 4px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: #f1f5f9;
+      border-left-color: #64748b;
+      transform: translateX(2px);
+    }
+
+    .contact-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 14px;
+    }
+
+    .andhra-office .contact-icon {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+    }
+
+    .contact-icon i {
+      color: #64748b;
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    .contact-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      color: #1e293b;
+      line-height: 1.5;
+      font-weight: 500;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .contact-value a {
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .contact-value a:hover {
+      color: #334155;
+      text-decoration: underline;
+    }
+
+    .andhra-office .contact-value a {
+      color: #475569;
+    }
+
+    .andhra-office .contact-value a:hover {
+      color: #334155;
+    }
+
+    .office-footer {
+      margin-top: 5px;
+      padding-top: 5px;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    .gst-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .gst-info i {
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .gst-info span {
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 0.95rem;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .buttons {
+      padding-top: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 280px;
+      height: 280px;
+      padding: 20px 18px 1px 25px;
+      color: #333;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .card:hover {
+      background-color: #e6f4ea;
+      box-shadow: 0 8px 20px rgba(0, 128, 0, 0.2);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #0047ab;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 8px;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      margin-bottom: 8px;
+    }
+
+    .info-icon {
+      flex: 0 0 28px;
+      color: #28a745;
+      font-size: 18px;
+      margin-right: 15px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-text {
+      flex: 1;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #444;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .info-text a {
+      color: #28a745;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .info-text a:hover {
+      text-decoration: underline;
+    }
+
+    .gst {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #2c662d;
+      padding-left: 6px;
+      margin-bottom: 0;
+      padding-bottom: 1px;
+    }
+
+    .carousel-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .carousel {
+      display: flex;
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+
+    .carousel-track.manual-mode {
+      animation: none;
+    }
+
+    @keyframes infiniteScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .buttons.flex.justify-center.gap-4.mb-8 {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    #north-btn,
+    #south-btn,
+    #east-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 600;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .btn-active {
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-inactive {
+      background-color: #d1d5db !important;
+      color: #4b5563 !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #north-btn:hover,
+    #south-btn:hover,
+    #east-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-active:hover {
+      background-color: #1d4ed8 !important;
+      box-shadow: 0 6px 12px rgba(29, 78, 216, 0.4);
+    }
+
+    @media (max-width: 1200px) {
+      .carousel-wrapper {
+        max-width: 900px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .carousel-wrapper {
+        max-width: 600px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .carousel-wrapper {
+        max-width: 400px;
+      }
+
+      .card {
+        width: 260px;
+        height: 260px;
+        padding: 18px 15px 1px 22px;
+      }
+
+      .card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+      }
+
+      .buttons.flex.justify-center.gap-4.mb-8 {
+        gap: 0.5rem;
+        padding: 0 1rem;
+      }
+
+      #north-btn,
+      #south-btn,
+      #east-btn {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        min-width: 100px;
+      }
+    }
+
+    @media (max-width: 599px) {
+      .card {
+        width: 250px;
+        height: 250px;
+        padding: 16px 13px 1px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .buttons.flex.justify-center.gap-4.mb-8 {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      #north-btn,
+      #south-btn,
+      #east-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        min-width: 140px;
+        width: auto;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .card {
+        width: 240px;
+        height: 240px;
+        padding: 15px 12px 1px 18px;
+      }
+
+      .card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+
+      .info-text {
+        font-size: 0.85rem;
+      }
+
+      .gst {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .head-office-container {
+        gap: 20px;
+      }
+
+      .head-office-card {
+        width: 320px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-Head-office {
+        padding: 40px 15px 20px 15px;
+      }
+
+      .head-office h1 {
+        font-size: 2rem;
+      }
+
+      .head-office-card {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .office-header {
+        padding: 20px 20px 12px;
+      }
+
+      .office-content {
+        padding: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .head-office h1 {
+        font-size: 1.75rem;
+      }
+
+      .head-office-card {
+        max-width: 300px;
+      }
+
+      .office-header {
+        padding: 18px 18px 12px;
+      }
+
+      .office-header h3 {
+        font-size: 1.4rem;
+      }
+
+      .office-content {
+        padding: 3px;
+      }
+
+      .contact-item {
+        padding: 4px;
+        margin-bottom: 3px;
+      }
+
+      .contact-icon {
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+      }
+
+      .contact-icon i {
+        font-size: 14px;
+      }
+    }
+
+    /* Corporate office: state map badge */
+    .state-circle {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: #f5f7fa;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2),
+        inset 0 -6px 14px rgba(0, 0, 0, 0.06),
+        inset 0 6px 12px rgba(255, 255, 255, 0.45);
+      margin: 4px auto 12px;
+      border: 1px solid rgba(12, 26, 75, 0.08);
+    }
+
+    .state-map {
+      width: 70px;
+      height: 70px;
+      display: block;
+    }
+
+    .state-map path {
+      fill: rgba(46,
+          47,
+          80,
+          0.725);
+      /* set to currentColor if theming by text color */
+      transform-origin: center;
+      transform-box: fill-box;
+      /* scale using its own bbox */
+    }
+  </style>
+
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <main class="main">
+    <header>
+      <nav class="navbar">
+        <div class="nav-container">
+          <a href="https://rkipl.iramediaconcepts.com/"><img class="C-logo"
+              src="https://rkipl.iramediaconcepts.com/wp-content/uploads/2023/01/RKIPL-1.png" alt="RK IPL Logo" /></a>
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="section-Head-office">
+      <div class="head-office">
+        <h1>Corporate Office Locations</h1>
+      </div>
+      <div class="head-office-container">
+        <div class="head-office-card telangana-office">
+          <div class="office-header">
+            <!-- <div class="office-badge">
+                <i class="far fa-building"></i>
+                <span>CORPORATE OFFICE</span>
+              </div> -->
+            <div class="state-circle">
+              <svg class="state-map" data-state="Telangana" width="72" height="72" aria-label="Telangana map">
+                <path
+                  d="m 196.013,447.57347 0.355,-0.58737 -0.992,-0.69115 0.747,-1.51426 -0.613,-0.21057 1.241,-0.39998 -0.817,-0.39594 0.635,-0.45035 0.514,0.21157 -0.079,-1.62207 1.079,-0.11284 0.183,0.56218 1.652,-0.60953 -0.076,-2.68095 0.518,-0.68913 0.603,0.50879 1.068,-2.73032 2.201,-0.32844 -1.277,-1.91022 -0.86,-0.0615 0.277,-0.90775 -0.859,0.0625 0.093,-0.72942 -1.042,0.0211 -0.208,-1.04578 0.089,-0.74252 0.744,0.23777 0.114,-1.12336 0.952,0.26295 -0.357,-1.01052 0.572,-1.00145 -0.248,-0.35967 0.436,-1.29363 0.803,-0.26598 -0.917,-0.37479 -0.022,-0.39998 1.843,-0.87047 2.027,1.56464 0.113,0.64581 0.651,-0.28916 1.838,0.41006 0.567,-2.11978 -0.313,-1.77722 2.652,-0.99339 -0.623,-2.26385 0.671,-0.30225 -0.004,-0.72036 -0.864,-1.31277 0.337,-0.5914 1.245,-0.53196 0.47,-1.50318 -0.602,-1.29564 -0.939,-0.23072 0.532,-1.46994 0.35,0.72036 1.003,0.0876 0.282,0.95511 1.644,0.44632 0.372,0.51786 0.677,-0.63574 1.62,0.0937 2.361,1.12941 1.432,-0.26699 1.272,0.45438 0.276,2.27191 1.196,-0.25389 1.109,0.41206 0.243,1.42763 -0.544,0.74051 0.802,-0.2277 0.534,0.49166 1.769,0.26598 1.568,1.49714 0.945,-0.15818 -0.337,-0.53095 0.624,-0.78181 0.152,-1.9072 1.276,0.49871 0.197,0.54808 1.146,-0.12694 2.123,1.6402 1.512,-1.13545 0.206,0.63271 0.954,0.36169 0.872,-1.58378 2.106,-0.62566 0.944,0.21258 0.896,1.25938 2.344,1.61199 0.687,1.4115 -0.235,2.29911 -0.871,1.57875 0.482,1.23922 -1.782,1.47498 0.032,1.54147 1.183,-0.2821 0.385,0.56923 0.094,3.60785 -0.942,0.62263 0.796,1.02765 1.682,0.39091 2.061,2.00492 0.989,-0.43826 0.646,0.45136 0.271,-0.48461 1.374,-0.45337 0,0 1.556,2.91065 2.964,-0.92186 3.124,2.41598 0.379,1.02966 1.007,0.80096 -0.165,0.36875 0.744,0.2287 -0.215,0.57629 0.593,1.78226 0.911,1.06291 -1.148,0.77779 0.027,1.03973 1.326,0.1199 0.663,-1.49714 0.794,0.5924 -0.404,0.21259 0.289,1.43266 2.338,-0.78182 -0.622,1.9213 1.852,6.41876 0.861,0.0756 1.8,-1.46087 1.977,0.89164 2.741,0.1219 0,0 1.559,-0.39897 0.455,0.48159 1.833,-0.5511 0.888,0.27504 1.086,-1.35508 0.529,-0.17329 0.311,0.52088 1.154,-0.71029 0,0 0.722,0.8997 -0.218,0.45337 -4.307,2.33034 -0.114,0.84025 -1.428,2.15605 0.434,0.44329 -0.466,0.66697 -0.167,1.9898 -1.629,1.91626 -0.917,0.0967 -0.987,-0.73346 -1.204,1.55054 -1.792,-0.0494 -0.393,1.96864 -2.433,0.41106 -1.158,0.74958 -1.798,-0.47352 0.167,1.21302 -0.9,-0.008 -0.241,2.09358 -0.552,0.55211 -2.234,-0.85335 -1.803,0.20754 0.357,-0.71532 -2.02,-1.1022 -1.341,0.66092 -0.291,1.2634 -0.753,0.72943 -0.538,-0.17128 -0.533,-1.1566 -0.587,0.46042 0.454,0.93194 -0.638,0.95107 2.712,1.16669 0.074,-0.67402 1.944,0.47453 0.054,1.15258 -0.456,0.10679 -0.218,0.96921 1.037,0.81104 -0.864,0.54506 -2.228,-0.59443 -0.08,-0.55412 -1.107,-0.75361 -0.56,0.8463 -0.3,-0.96015 -0.824,-0.35161 -0.375,-1.85984 -0.82,-1.19993 -1.275,-0.0544 -0.401,-0.69819 -1.01,1.30672 -1.842,0.43927 -0.76,1.27146 -0.374,0.96418 0.867,0.23676 0.766,0.85033 -0.456,1.49915 -1.879,2.25579 -1.174,0.0927 -0.842,-1.32184 -1.08,0.16926 -0.741,-0.85436 -2.655,1.47699 -3.158,0.69014 -1.478,1.04981 -3.359,0.45942 -0.854,1.16467 -0.139,5.86766 -0.881,0.49166 -3.049,-0.62465 -2.207,0.94705 -0.42,0.44531 0.106,1.67446 -0.792,-0.10881 -0.204,-0.93697 -0.525,-0.0796 -0.028,1.51326 -1.287,1.39135 -1.284,-0.0655 -2.023,-1.57673 -1.213,0.9279 -3.212,-0.53598 -1.872,1.13041 -1.247,-0.0474 -0.391,2.22859 -1.213,0.62364 -0.322,1.12134 -0.813,0.001 -0.34,0.47453 -0.961,-0.37882 -0.574,-1.25332 -0.72,0.93395 -2.39,-0.79996 -1.852,0.66697 -1.74,-0.46345 -1.196,0.21963 -1.101,-0.76771 -2.029,-0.19848 0,0 0.014,-1.7742 -0.405,-0.6186 0.39,-1.59084 -0.475,-0.26699 -0.064,-0.93395 0.567,-1.41352 -0.459,-0.0222 -0.026,-0.55513 0.286,-0.39393 0.681,0.11284 0.654,-0.76469 0.53,0.23676 0.027,-1.10724 -2.033,-0.83622 -1.732,0.28613 -1.44,-0.37177 -1.22,-0.50879 -1.037,-1.42157 1.19,-0.12191 0.097,-0.3899 1.459,0.1612 0.267,-0.58133 0.758,-0.15616 -0.499,-1.03571 1.522,-0.41509 0.11,-1.37221 -0.763,0.20352 -0.343,-0.5511 1.014,-0.33852 0.038,-0.73749 -0.909,-0.0554 0.296,-1.50218 0.703,0.0876 -0.371,-2.84517 0.963,-2.15403 -0.77,-2.12078 -2.148,-1.26239 0.812,-1.03369 -0.386,-0.2418 1.552,-1.23217 -0.429,-0.27203 0.368,-1.80543 0.995,0.36068 0.605,-0.39594 0.157,-0.70223 -0.531,-0.50879 1.306,-0.0504 0.014,-0.54203 0.783,0.21963 0.007,-0.56521 0.617,-0.13298 0.258,-0.59947 -0.098,0.48461 0.752,0.18337 0.034,-0.72037 -1.965,-0.59442 -0.04,-0.66192 -0.867,0.29318 -0.44,-0.52289 -0.54,0.71129 -0.243,-0.55815 -1.048,-0.33349 0.218,-2.41698 2.338,-1.22713 0.082,-0.3758 -1.287,-0.40501 0.134,-0.41509 0.316,-0.55916 0.497,0.19344 0.482,-1.20698 0.502,0.0524 -0.241,-0.8322 0.656,0.11788 0.151,-1.209 0.424,0.25087 0.196,-0.50576 -0.151,-0.52592 -1.128,-0.37378 -0.974,-0.96216 1.148,-1.00649 -0.059,-1.1566 -0.7,-1.07299 0.81,-1.71073 z">
+                </path>
+              </svg>
+            </div>
+            <h3>Telangana</h3>
+            <div class="office-subtitle">Head Office</div>
+          </div>
+
+          <div class="office-content">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="far fa-map"></i>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">Corporate Address</div>
+                <div class="contact-value">
+                  Flat No. 207, Lumbini Enclave<br />
+                  Opp. NIMS, Panjagutta,<br />
+                  Hyderabad – 500082, Telangana
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <span style="color: rgb(100, 116, 139)">&#9742;</span>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">Corporate Line</div>
+                <div class="contact-value">
+                  <a href="tel:+914023300156">+91 40 2330 0156</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="far fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">Corporate Email</div>
+                <div class="contact-value">
+                  <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="office-footer">
+              <div class="gst-info">
+                <i class="far fa-file-alt"></i>
+                <span>GST No : 36AAECR0071P1Z4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="head-office-card andhra-office">
+          <div class="office-header">
+            <!-- <div class="office-badge">
+                <i class="far fa-building"></i>
+                <span>CORPORATE OFFICE</span>
+              </div> -->
+            <div class="state-circle">
+              <svg class="state-map" data-state="Andhra Pradesh" width="72" height="72" aria-label="Andhra Pradesh map">
+                <path
+                  d="m 295.438,482.23741 -0.002,0.007 0,0 0.002,-0.007 z m 0.652,-0.0393 -0.389,2.49054 -0.753,-1.07903 -0.016,-0.80298 1.158,-0.60853 z m -0.652,0.0393 -0.122,-0.62767 -0.272,0.4433 -1.262,0.0977 -0.058,-0.73144 -0.901,0.58133 1.737,0.7667 0,0 -0.023,1.03873 0.454,0.14004 0.663,1.50017 -7.647,3.77106 -4.692,1.85681 -3.756,-1.06895 -3.105,0.36975 -2.669,1.33493 -2.599,5.73367 0.099,0.96921 -2.908,3.10007 -0.273,0.46546 0.384,0.87048 -0.948,0.83521 -3.03,0.41106 -0.866,-1.47094 0.261,-0.7788 0.373,0.006 -0.117,-0.58032 -2.482,-0.87249 -3.128,0.60651 -2.228,1.07097 -1.913,1.26945 -1.459,1.6402 -1.448,4.49646 -2.123,3.3872 -1.075,5.04353 1.396,7.50586 1.762,3.11215 -1.448,10.08303 2.407,6.52153 -0.174,3.87786 1.651,4.44205 -3.018,-5.51604 -0.564,-0.25692 -0.116,1.91022 -0.617,-0.62263 0.355,-0.61659 -0.401,-0.0776 -1.169,1.85077 2.315,2.12481 1.569,0.0363 1.581,1.4105 0,0 0.001,1.1425 -0.756,-0.42516 -0.956,-1.89007 -1.638,-0.0433 -1.73,-1.26642 -1.577,0.17228 -0.083,0.42113 0.891,0.17833 0.069,0.37378 -0.631,-0.0705 -0.22,0.60953 -0.702,0.17631 0.029,0.71936 -0.644,0.29217 0.441,0.65084 -0.587,0.82111 -1.556,0.70021 -1.065,-0.0191 -0.429,0.47957 -0.538,-0.44632 -0.687,0.65789 1.332,1.04982 -0.848,0.61457 -0.451,-0.57931 -0.714,0.31131 0.153,-0.57024 -0.476,0.0957 -0.1,-1.1294 -1.848,0.78685 -0.66,-0.46848 -0.271,-0.94604 -2.238,-0.27001 -1.136,0.44229 1.056,0.46748 -0.297,1.49009 0.529,-0.38084 0.197,0.28109 -0.5,0.17732 0.045,0.45338 -1.591,0.5249 0.142,0.71633 -0.976,0.70626 -0.849,-0.95309 -1.027,0.1219 -0.001,0.68107 -0.615,0.41509 -0.758,1.66338 -1.751,-0.1471 -1.873,-1.34097 -1.365,0.1884 -0.438,0.70222 0.653,0.35464 -0.895,-0.0232 -0.123,-1.42964 -2.722,0.87753 -0.912,-0.23072 -0.182,1.11329 -0.893,-0.29117 -0.784,0.83925 0.691,1.28657 -0.439,-0.004 -0.916,3.18974 -0.762,0.57729 0.044,1.25333 -0.487,0.12694 -0.176,-0.51281 0,0 0,0 0,0 -0.114,0.0373 -0.358,-0.0363 -0.102,0.86242 -0.647,0.0222 0.041,0.96316 -1.911,0.1199 -1.63,-0.88257 -0.545,-0.83622 -1.561,0.22668 0.782,-0.72741 -0.137,-0.80398 0,0 0.428,-2.03716 1.298,0.005 0.886,-1.73995 0.689,0.70726 1.203,-0.11788 -0.275,-1.46087 0.738,0.11486 -0.133,-1.46792 1.11,-0.4564 -0.056,-0.62163 0.545,-0.33751 -0.402,-0.47957 1.263,-0.7939 -0.589,-0.66092 0.581,-0.36572 0.184,-1.24426 -0.457,-0.80499 -0.729,0.94402 -1.027,-1.12638 -0.749,0.20553 -0.241,-0.44632 -0.695,0.33147 -0.508,-0.35263 0.636,-0.26497 -0.884,-0.48964 0.746,-4.80576 -3.414,-0.19546 -0.93,0.66394 0.224,-1.28859 -0.7,-0.15616 -0.1,-0.54505 -1.57,0.28814 -0.469,-0.68308 0.12,-0.45741 0.865,0.0816 0.084,-0.55715 -0.512,-0.50173 0.697,-0.93798 -0.098,-1.37926 -1.516,-0.98936 -0.07,0.73144 -1.102,-0.18941 -0.406,0.89566 -0.444,0.005 -0.044,-1.30168 0.745,-0.28311 -0.243,-1.23519 -1.148,1.15157 -0.515,-0.73346 -1.438,-0.0796 -0.25,0.56722 0.447,1.03671 -1.082,0.53297 0.051,0.49669 -1.374,0.48259 -0.086,1.24527 -0.276,-0.6186 -0.666,0.19747 0.136,-0.54506 -0.442,0.0363 -0.809,0.44028 0.55,0.43624 -0.324,0.16926 -0.537,-0.3496 -0.828,0.58536 -0.762,-0.5914 -0.154,1.25534 -0.522,-0.45539 -0.092,0.58435 -0.695,0.0846 0.161,-2.61647 -1.021,-0.0473 0.332,-0.77477 -1.362,-0.22769 -0.826,0.4302 -0.274,-0.68006 -1.182,0.38385 -0.348,-1.1969 -0.467,0.72338 -0.138,-0.42617 -0.547,0.46042 -0.037,-1.24325 -0.441,0.37983 0.137,0.92488 -0.809,0.16422 0.803,0.61861 0.091,1.4246 -1.493,-0.134 -0.737,0.47554 -0.706,-0.70323 -0.313,0.83521 -0.395,-0.21157 -0.506,-1.54953 1.023,-1.70469 0.502,-0.0876 -0.114,-0.60853 -2.193,-2.09761 0.919,-0.91883 -1.005,-1.33897 -0.907,-0.0826 0.162,-0.6045 0.954,-0.14911 0.098,-0.50576 1.637,0.35766 -0.241,1.613 0.322,0.96921 2.039,0.23979 0.549,1.09212 3.478,-0.71733 0.843,0.91682 -0.114,1.85278 0.881,-0.0242 0.03,0.38487 0.744,-0.63372 -0.413,-0.58032 0.48,-0.70524 -1.151,-0.008 0.162,-0.82514 -1.197,-0.33651 1.45,-1.73994 -0.12,-0.32643 -0.946,0.48662 0.067,-0.61155 0.606,-0.11284 0.272,-0.77175 2.317,0.30931 -0.087,-2.61144 -0.87,-0.009 -0.259,-0.81305 -1.187,-0.32744 -0.223,0.64278 0.852,1.8004 -0.668,0.43524 -0.594,-0.82615 0.081,-0.84932 -1.667,-0.14709 0.033,-1.19086 -1.03,0.43423 -1.67,-0.5773 -0.842,1.08709 -0.143,1.60595 -0.623,0.0846 -0.538,-0.65286 -2.34,-0.0121 -0.271,-0.69316 0.528,-0.47251 -1.486,-1.13344 0.084,-0.94805 0.627,-0.50375 0.596,0.30326 0.046,-0.98634 0.62,-0.71835 -2.16,0.21258 -0.893,-1.1828 -0.583,-0.10075 -0.828,-1.60897 0.793,-2.87338 -0.371,-0.96821 1.432,-0.53598 0.329,-3.46982 -0.765,0.2821 -1.342,-0.40905 0.435,-1.01455 -0.216,-1.18784 0.475,-0.42113 1.67,1.34803 2.2,0.39796 0.395,-0.4171 0.967,0.008 -0.123,0.51584 0.792,0.11787 1.574,-2.61647 -0.459,-0.48158 0.536,-0.13601 0.01,-0.97425 -0.78,-0.59543 0.906,-0.82212 -0.34,-0.57729 -0.68,-0.0907 -0.12,-0.81406 -1.007,0.11788 -0.715,-2.46333 -1.193,-1.21202 0.032,-0.3355 1.145,0.13803 0.056,-2.91166 1.092,-0.41409 0.728,0.6045 0.184,-0.73849 -1.711,-1.64222 0.433,-1.93137 -0.871,-0.18841 0.915,-1.47195 1.622,-0.9007 2.208,-0.37378 5.454,0.80499 0,0 2.029,0.19847 1.101,0.76772 1.197,-0.21964 1.739,0.46345 1.853,-0.66696 2.39,0.79995 0.72,-0.93395 0.573,1.25333 0.961,0.37882 0.34,-0.47453 0.813,-0.001 0.321,-1.12135 1.213,-0.62364 0.391,-2.22858 1.247,0.0474 1.873,-1.13041 3.212,0.53599 1.212,-0.92791 2.023,1.57573 1.285,0.0655 1.287,-1.39136 0.028,-1.51326 0.525,0.0796 0.204,0.93697 0.792,0.1078 -0.105,-1.67345 0.42,-0.44532 2.207,-0.94704 3.049,0.62464 0.881,-0.49065 0.138,-5.86766 0.854,-1.16467 3.359,-0.45941 1.478,-1.04982 3.158,-0.69013 2.655,-1.478 0.74,0.85537 1.08,-0.16926 0.842,1.32183 1.174,-0.0927 1.879,-2.25578 0.456,-1.49815 -0.766,-0.85134 -0.867,-0.23575 0.375,-0.96417 0.76,-1.27247 1.842,-0.43927 1.01,-1.30673 0.4,0.69719 1.275,0.0554 0.82,1.19893 0.374,1.86084 0.825,0.35162 0.3,0.96014 0.56,-0.84629 1.107,0.7536 0.08,0.55413 2.228,0.59442 0.864,-0.54506 -1.037,-0.81103 0.218,-0.96921 0.456,-0.1068 -0.054,-1.15257 -1.944,-0.47554 -0.073,0.67401 -2.712,-1.16567 0.638,-0.95108 -0.455,-0.93193 0.588,-0.46043 0.533,1.1556 0.538,0.17127 0.753,-0.72942 0.291,-1.2634 1.341,-0.66092 2.02,1.10321 -0.357,0.71532 1.803,-0.20754 2.234,0.85335 0.552,-0.55211 0.24,-2.09358 0.9,0.008 -0.167,-1.21303 1.798,0.47353 1.157,-0.74857 2.434,-0.41106 0.393,-1.96865 1.792,0.0494 1.204,-1.55053 0.986,0.73446 0.917,-0.0977 1.628,-1.91526 0.167,-1.99081 0.466,-0.66696 -0.435,-0.44229 1.428,-2.15605 0.114,-0.84126 4.307,-2.33034 0.218,-0.45337 -0.722,-0.8997 0,0 0.895,-0.94201 3.155,-1.23418 1.526,-1.44979 2.84,0.31535 0.357,0.72842 1.346,0.68006 0.535,-0.1471 -0.006,-1.36415 0.648,-0.30225 0.16,0.53297 0.508,-0.0584 0.075,-2.24874 0.507,0.38184 0.159,-0.32139 -1.236,-1.23519 0.559,-0.4433 0.085,-1.11328 0.732,-0.1743 0.443,-0.71431 -1.227,-0.23576 1.047,-1.14754 -0.485,-0.90171 2.36,-2.80588 0.526,0.77678 0.502,-0.0484 0.147,1.53845 0.494,-0.0736 -0.389,1.06291 1.368,0.46043 0.226,0.49065 -0.729,0.87552 0.09,0.81103 0.966,0.91279 0.668,-1.2775 2.266,-0.98332 0.549,-1.40949 -0.357,-0.54707 0.48,-0.43524 0.958,0.65387 0.831,-0.0655 0.151,1.01354 0.854,0.34255 1.769,-0.73144 0.759,0.20251 0.102,-1.18784 -0.436,0.22366 -0.462,-0.56319 1.548,-2.06738 -1.19,-0.22065 -0.117,-0.44229 0.567,-0.41005 -0.962,-0.0433 0.074,-1.11933 0.825,-0.33449 1.716,-2.61848 1.439,0.66897 0.07,0.58335 0.3,-1.10523 0.978,0.19445 0.281,-0.72238 1.606,-0.23172 0.055,-0.70626 0.783,0.0282 0.314,-0.63472 -1.354,-1.49613 0.703,0.0796 -0.722,-0.74857 -0.351,0.88962 -0.496,-1.613 0.859,-0.44733 1.309,0.30426 0.977,1.12034 -0.146,-1.19691 0.546,-0.0151 0.07,-0.46345 -0.389,-1.075 0.29,-0.17933 0.427,0.54707 0.246,-0.25893 0.173,0.8866 -0.421,-0.0443 0.039,0.34859 0.752,0.12594 0.315,-1.5183 0.677,0.53297 0.537,-0.85134 -0.212,-0.7133 0.607,-0.7385 1.544,3.04264 0.548,0.10277 -0.365,0.5914 0.838,1.48605 0.717,0.23072 -0.848,-1.56666 0.994,-0.66394 1.74,4.20932 1.457,0.4836 1.827,-0.12392 1.146,1.27348 0.862,-0.0786 0.594,-0.60853 3.787,-0.35967 0.079,-1.65532 0.552,0.34759 0.191,-0.35766 -0.421,-0.35464 0.758,0.1219 -0.468,-0.41105 0.681,0.22467 0.661,-0.61055 -0.289,-0.54001 0.524,-0.63977 -0.534,-1.04074 1.184,0.72439 0.372,-0.88055 1.605,-0.97828 0.451,1.15459 0.524,-0.9279 0.875,0.0564 -0.007,-0.63775 -0.72,0.10075 -0.586,-1.05082 1.452,0.0443 0.08,-0.77376 0.776,0.12392 -0.173,0.70122 0.527,0.52491 0,0 0.878,0.54405 -3.728,4.32417 -0.604,1.85279 -1.844,1.75808 -2.297,3.46075 -4.825,4.53576 -0.023,0.93294 -8.484,4.31511 -3.07,2.10768 -0.901,1.5183 -2.5,2.32631 0,0.73447 -1.373,1.87595 -2.744,2.95298 -12.682,6.47518 -5.007,3.89498 -1.482,1.88201 -0.541,2.01499 -0.477,0.23072 0.151,0.96115 1.163,1.01657 0.89,-0.24886 -0.238,2.48751 -0.903,0.51383 z">
+                </path>
+              </svg>
+            </div>
+            <h3>Andhra Pradesh</h3>
+            <div class="office-subtitle">Head Office</div>
+          </div>
+
+          <div class="office-content">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="far fa-map"></i>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">Corporate Address</div>
+                <div class="contact-value">
+                  Flat No. 1/712, Dwaraka Nagar<br />
+                  YSR Kadapa 516004,<br />
+                  Andhra Pradesh
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <span style="color: rgb(100, 116, 139)">&#9742;</span>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">Corporate Line</div>
+                <div class="contact-value">
+                  <a href="tel:+914023300246">+91 40 2330 0246</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="far fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <div class="contact-label">Corporate Email</div>
+                <div class="contact-value">
+                  <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="office-footer">
+              <div class="gst-info">
+                <i class="far fa-file-alt"></i>
+                <span>GST No : 37AAECR0071P1Z2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-branches pt-32">
+      <div class="buttons flex justify-center gap-4 mb-8">
+        <button id="north-btn" class="px-4 py-3 text-lg btn-active rounded transition-colors duration-300">
+          North India
+        </button>
+        <button id="south-btn" class="px-4 py-3 text-lg btn-inactive rounded transition-colors duration-300">
+          South India
+        </button>
+        <button id="east-btn" class="px-4 py-3 text-lg btn-inactive rounded transition-colors duration-300">
+          East India
+        </button>
+      </div>
+
+      <div class="carousel-wrapper">
+        <div id="carousel" class="carousel">
+          <div id="carousel-track" class="carousel-track">
+            <div id="north-group">
+              <div class="card">
+                <div class="state-circle">
+                  <svg class="state-map" viewBox="0 0 611.86 695.70" width="72" height="72"
+                    aria-label="Jammu & Kashmir map">
+                    <use href="india-states.svg#jammuandkashmir"></use>
+                  </svg>
+                </div>
+                <h3>JAMMU & KASHMIR</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    E-3 Nidheesh Apartments, Trikuta Nagar<br />
+                    EXT Jammu, Jammu - 180012,<br />
+                    Jammu and Kashmir
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 01AAECR0071P1ZH</p>
+              </div>
+              <div class="card">
+                <div class="state-circle">
+                  <svg class="state-map" viewBox="0 0 611.86 695.70" width="72" height="72" aria-label="Bihar map">
+                    <use href="<path id=" bihar" class="state" title="Bihar"
+                      d="m 416.975,260.26064 0.017,0.0796 0,0 -0.017,-0.0796 z m -83.434,-22.94171 0.695,-0.0735 -0.041,0.73144 1.192,0.38487 0.057,0.63976 0.955,-0.22568 0.83,1.60091 6.826,1.08608 1.487,2.91268 -0.348,2.81293 -0.661,1.13545 2.388,1.05082 0.332,-0.35061 0.438,0.51785 0.757,-0.55916 1.293,1.17071 1.482,0.21964 0.336,0.47654 -0.225,0.56521 1.939,0.68913 -0.796,0.73547 3.627,-0.26296 -0.389,1.28557 0.694,1.2503 2.597,0.40602 1.534,-1.16869 0.964,0.21661 3.789,-2.11574 2.095,1.79334 -0.044,3.3187 1.783,1.21504 0.701,-0.16423 -0.025,0.96418 2.057,-1.05082 0.256,-0.88761 1.427,-0.36068 2.304,0.88559 -0.049,0.52692 1.174,-0.19243 0.525,0.6176 0.731,-0.67301 1.564,-0.0584 4.5,1.90417 0.598,0.96619 3.364,1.75405 0.716,-0.85335 1.425,0.46244 1.27,-0.53901 -0.049,-0.56419 0.799,-0.0826 0.06,-0.63774 1.729,-0.35867 0.619,-1.29363 0.564,0.0353 0.411,3.17563 1.489,1.08205 1.961,-0.16522 0.202,0.87249 0.975,0.0584 0.597,0.55211 0.584,-1.41049 2.046,-0.75664 2.918,1.39237 0.961,-0.2952 0.542,-0.9813 1.171,0.64681 0.685,-0.1078 0.488,-1.33091 1.234,0.76671 0.826,-1.17676 0.81,1.60394 1.357,0.60248 0.13,0.64379 0.674,0.002 0.097,-0.63473 1.261,-1.07097 0.183,-2.30011 0,0 0.822,0.57729 0.479,-0.6186 1.318,-0.34255 0.045,0.46043 -1.138,0.97929 0.309,0.43523 0.68,-0.0997 0.058,0.68208 0.814,0.59442 -0.784,0.65084 0.15,0.43524 0.627,-0.13601 0.509,0.63775 -1.625,1.69058 -1.461,0.67502 -1.563,1.80241 -0.678,-0.0463 -0.51,0.8604 -1.026,-0.25994 0.085,1.65028 -0.633,-0.0725 -0.142,0.3617 -0.381,-0.51483 -1.482,1.08608 -0.255,2.54393 -0.548,0.54405 0.399,0.94805 1.843,0.45942 -0.576,0.54002 0.568,0.32139 -0.252,1.04981 0.71,-0.0363 0.599,1.08709 1.834,0.79391 -0.272,1.25131 0.392,0.0927 -0.696,1.06794 0.308,1.16769 0.776,0.76268 -0.051,0.54405 -0.896,-0.13098 -0.42,-0.56319 -0.068,0.37983 -0.368,-0.19949 -0.013,-0.51583 -1.256,-0.26498 -0.566,0.74152 -0.414,-0.27202 -0.33,1.17575 -0.62,0.0191 -0.526,0.70625 -0.572,-0.2428 -0.466,0.91984 0.139,0.62868 0.484,0.13299 -0.102,0.92387 1.518,1.26844 -0.705,1.0075 0.29,0.81305 -1.027,-0.49267 0,0 -0.09,-0.59543 -1.581,-0.23676 -0.495,-1.24627 -1.616,-0.0292 -0.562,-0.85839 -0.684,0.40502 -0.161,1.14451 -1.219,-0.31434 0.297,0.75865 -0.482,0.50073 -0.011,1.07096 -1.682,-0.76166 -0.459,0.52087 -0.972,-0.41811 -0.678,3.10108 -0.849,-0.38386 -0.82,0.3768 -1.352,1.51125 0.237,3.20787 -0.149,0.62868 -0.765,0.0665 -0.752,0.76973 0.379,0.48058 -0.967,4.49545 -2.52,-0.83219 -0.67,1.29866 0.273,1.10422 -0.728,-0.65991 -0.456,0.38889 -0.368,-0.41005 -0.769,0.0846 0.115,-0.69014 -0.601,-0.58334 -0.55,0.0413 -0.403,0.97324 -1.323,0.35061 -1.37,-1.02563 -1.177,1.61602 -0.858,0.39897 -0.358,2.1369 -0.477,0.0715 -0.285,1.22612 -0.767,-0.24281 -1.357,-1.48606 -1.499,-0.42214 0.697,-1.07097 -0.176,-1.14754 0.394,-0.59543 -1.229,0.18941 -0.979,-0.82816 -0.469,0.61357 -1.291,-0.42416 -0.186,-2.34545 -0.793,-0.94906 -0.994,0.11485 0.241,-0.88357 -2.099,1.09615 -1.519,-1.57472 -2.104,0.0312 -0.848,-0.54808 -0.84,2.52277 -0.986,0.60853 0.317,2.42605 -1.845,-0.48662 -0.173,0.87249 -0.659,-10e-4 -0.388,0.93898 -0.666,-0.6045 -4.27,0.55413 -0.012,0.67905 -2.748,0.79189 0.392,0.76973 -1.674,1.15761 -0.502,-0.17429 0.224,-1.22411 -0.479,0.57024 -1.316,0.0665 -0.458,0.83521 -1.476,0.0887 -0.374,-2.08955 -0.958,0.23677 -0.037,-1.35912 -0.781,-0.41408 -2.437,1.68554 -0.433,1.44274 -1.796,-0.4292 -0.141,0.65387 -0.925,0.17732 0.083,0.8473 -0.669,1.20598 -0.817,-1.18784 -0.776,0.16724 0.106,-0.63976 -0.844,-0.70323 -0.97,-0.14105 -0.436,-0.63674 0.321,-0.17832 -0.779,-0.45237 0.021,-0.69014 0.674,-0.50677 -0.699,-1.45784 -0.497,0.0403 0.228,0.28411 -0.48,0.48763 -0.464,-0.51685 -0.366,0.41509 -0.611,-0.46546 -0.323,0.18941 0.134,0.84629 -0.695,-0.68912 -0.126,0.81808 -0.633,0.54002 -1.319,-3.01745 -1.142,-0.59442 -1.334,2.07846 -1.266,0.34658 -3.168,0.64379 -4.574,-0.50878 0,0 0.904,-2.28702 -0.918,-0.58838 0.339,-0.68107 -0.69,-0.56722 -0.019,-0.7395 -0.56,0.10478 -1.389,-1.17575 0.075,-1.12941 -0.762,-0.86745 -0.212,-3.23507 -0.538,-0.15818 0.82,-2.47542 -0.461,-1.32486 0.299,-0.40703 0.809,-0.18739 0.44,-0.9803 1.068,-0.0625 1.657,-1.52334 0.517,0.22064 1.219,-0.49568 0.583,-0.89265 0.812,-0.0776 -0.288,-0.16523 0.405,-0.41106 0.197,0.23072 0.596,-0.56723 0.616,0.52693 0.784,-0.53599 -0.104,-0.47957 0.921,-0.12292 -0.589,-0.67401 0.856,-0.18135 1.38,-1.97066 3.338,-1.83869 -0.144,-1.35105 0.519,-0.5773 1.126,-0.24683 0.965,0.64177 0.18,0.78585 1.731,0.18941 -0.042,-0.36371 0.732,0.1209 0.267,-1.69058 1.019,-0.0957 0.458,1.14552 0.982,-0.3496 0.829,0.85235 0.758,-0.15113 0.236,-0.9813 -0.094,0.78383 0.438,0.20452 0.069,-1.21907 1.569,0.1884 -0.629,-0.7526 0.412,-0.77879 -1.334,-1.01153 -0.618,0.0746 0.035,-1.01153 -2.205,-0.34255 -0.314,-0.90775 -1.191,-0.65286 -1.152,0.28814 -1.979,-1.2503 -0.745,0.21157 0.021,-0.7929 -1.595,-1.65934 -0.879,-0.0736 -0.647,-1.0619 -0.139,-2.23362 1.42,0.45538 0.704,-0.95208 0.97,0.37479 0.469,-1.66439 -0.217,-1.33291 -2.079,-0.24583 -1.278,-1.49916 -0.607,0.32441 -1.667,-0.36672 -0.002,-1.58983 1.263,0.22265 0.243,-0.54707 1.541,-0.27102 0.728,-1.31679 -0.016,-1.01455 3.986,1.02059 2.977,-0.65185 -0.255,-1.03369 -1.603,-0.30628 -0.578,-1.62006 -1.061,0.5632 -0.28,-0.2408 -0.196,-0.41307 0.579,-1.21303 -0.234,-1.2634 -0.667,-0.2015 -0.844,0.85738 -0.78,-0.4977 0.192,-0.75059 -0.842,-0.31131 -0.222,0.55714 -0.796,-0.34255 -0.091,-0.94402 -0.477,-0.2559 0.455,-0.45237 -0.122,-1.9485 -1.048,-0.56319 0.627,-0.63271 -1.702,0.0584 0.824,-2.53285 -0.509,-0.81708 -1.183,-0.57528 0.58,-1.05586 -0.188,-0.49972 -1.299,0.33348 -0.538,-0.27303 0.619,-0.66595 0,0 1.045,-0.78686 -0.694,-0.18034 -0.104,-0.86443 1.318,-0.49368 2.013,0.37278 1.427,-1.31982 0.048,-0.64682 0.423,0.0826 z">
+                      "></use>
+                  </svg>
+                </div>
+                <h3>BIHAR</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    1st Floor, Ward No.13, Pachira Tola<br />
+                    Kamalpur, Araria - 854334,<br />
+                    Bihar
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 10AAECR0071P1ZI</p>
+              </div>
+              <div class="card">
+                <h3>UTTAR PRADESH</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    Auri More, Anpara, Sonbhadra<br />
+                    Uttar Pradesh,<br />
+                    231223
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 09AAECR0071P2Z0</p>
+              </div>
+              <div class="card">
+                <h3>MADHYA PRADESH</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    Flat No. B-8, Sangeeta Apartment<br />
+                    LIG Road, Singrauli – 486889,<br />
+                    Madhya Pradesh
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 23AAECR0071P1ZB</p>
+              </div>
+              <div class="card">
+                <h3>JHARKHAND</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    Balumath, Barka<br />
+                    Latehar<br />
+                    829206, Jharkhand
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 20AAECR0071P1ZH</p>
+              </div>
+            </div>
+
+            <div id="south-group" style="display: none">
+              <div class="card">
+                <h3>KARNATAKA</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    No.179, Kothanur Dinne Main Road<br />
+                    Bangalore (Urban) – 560076,<br />
+                    Karnataka
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 29AAECR0071P1ZZ</p>
+              </div>
+              <div class="card">
+                <h3>KERALA</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    V/30, Varappetty Panchayat<br />
+                    Kothamangalam Taluk, Ernakulam – 686691,<br />
+                    Kerala
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 32AAECR0071P1ZC</p>
+              </div>
+            </div>
+
+            <div id="east-group" style="display: none">
+              <div class="card">
+                <h3>ARUNACHAL PRADESH</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    Polo Colony, Main road<br />
+                    Naharlagun, Papum Pare – 791110,<br />
+                    Arunachal Pradesh
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 12AAECR0071P1ZE</p>
+              </div>
+              <div class="card">
+                <h3>ASSAM</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    G1, G+1 Storey Building<br />
+                    Tingari Bazaar, Assomia Gaon PO, Digboi,<br />
+                    Tinsukia - 786171, Assam
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 18AAECR0071P1Z2</p>
+              </div>
+              <div class="card">
+                <h3>WEST BENGAL</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    2/H/13, Beleghata Main Road<br />
+                    KG Bose Sarani, Kolkata – 700085,<br />
+                    West Bengal
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 19AAECR0071P1Z0</p>
+              </div>
+              <div class="card">
+                <h3>ODISHA</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    Ganesh Sponge Pvt Ltd, Hakim Pada,<br />
+                    NH 55, Plot No.466/1213, Kanjara,<br />
+                    Angul – 759127, Odisha
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 21AAECR0071P1ZF</p>
+              </div>
+              <div class="card">
+                <h3>SIKKIM</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    380 1, Melli Bazar, South Sikkim<br />
+                    Sikkim,<br />
+                    737128
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 11AAECR0071P1ZG</p>
+              </div>
+              <div class="card">
+                <h3>MANIPUR</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    Ground floor of the Ayangpali<br />
+                    Thawartthaba Leikai, Ayangpali,<br />
+                    Imphal - 795005, Manipur
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 14AAECR0071P1ZA</p>
+              </div>
+              <div class="card">
+                <h3>NAGALAND</h3>
+                <div class="info-row">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-text">
+                    600-1, Akhel House, Kuda Village<br />
+                    Dimapur - 797112,<br />
+                    Nagaland
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="info-text">
+                    <a href="mailto:info@rkipl.com">info@rkipl.com</a>
+                  </div>
+                </div>
+                <p class="gst">GST No.: 13AAECR0071P1ZC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+<script>
+  const northBtn = document.getElementById("north-btn");
+  const southBtn = document.getElementById("south-btn");
+  const eastBtn = document.getElementById("east-btn");
+
+  const carouselTrack = document.getElementById("carousel-track");
+  const northGroup = document.getElementById("north-group");
+  const southGroup = document.getElementById("south-group");
+  const eastGroup = document.getElementById("east-group");
+
+  let currentTransform = 25;
+  let animationId;
+  let isPaused = false;
+  let currentGroupIndex = 0;
+  let isManualOverride = false;
+  let manualOverrideTimer;
+  let isToggling = false;
+  let lastTimestamp = 0;
+  let cycleCount = 0;
+
+  let autoSwitchState = {
+    timer: null,
+    startTime: 0,
+    cycleCount: 0,
+    isActive: true,
+    lastSwitchedFrom: -1,
+  };
+
+  const LEFT_MARGIN = 25;
+  const ANIMATION_SPEED = 0.6;
+  const CARD_WIDTH = 288;
+  const CARDS_VISIBLE = 3;
+  const SMALL_GROUP_DISPLAY_TIME = 5000;
+  const LARGE_GROUP_CYCLES = 2;
+  const AUTO_SWITCH_INTERVAL = 500;
+
+  const groups = [northGroup, southGroup, eastGroup];
+  const buttons = [northBtn, southBtn, eastBtn];
+  const groupNames = ["North", "South", "East"];
+
+  function getCurrentGroupCards() {
+    const currentGroup = groups[currentGroupIndex];
+    return Array.from(currentGroup.children).filter(
+      (child) =>
+        child.classList.contains("card") &&
+        !child.classList.contains("clone-slide")
+    );
+  }
+
+  function setupInfiniteCarousel() {
+    const currentGroup = groups[currentGroupIndex];
+    const cards = getCurrentGroupCards();
+
+    const existingClones = currentGroup.querySelectorAll(".clone-slide");
+    existingClones.forEach((clone) => clone.remove());
+
+    if (cards.length < 4) {
+      console.log(
+        `Group ${groupNames[currentGroupIndex]} has ${cards.length} cards - centering without animation`
+      );
+      return;
+    }
+
+    const clonesNeeded = Math.min(CARDS_VISIBLE, cards.length);
+    for (let i = 0; i < clonesNeeded; i++) {
+      const clone = cards[i].cloneNode(true);
+      clone.classList.add("clone-slide");
+      currentGroup.appendChild(clone);
+    }
+
+    console.log(
+      `Group ${groupNames[currentGroupIndex]} setup with ${cards.length} cards and ${clonesNeeded} clones`
+    );
+  }
+
+  function checkAutoSwitch() {
+    if (isManualOverride || isToggling || !autoSwitchState.isActive) {
+      return;
+    }
+
+    const cards = getCurrentGroupCards();
+    const currentTime = Date.now();
+
+    if (cards.length < 4) {
+      const timeElapsed = currentTime - autoSwitchState.startTime;
+      if (timeElapsed >= SMALL_GROUP_DISPLAY_TIME) {
+        console.log(
+          `Auto-switch: Small group time limit reached for ${groupNames[currentGroupIndex]}`
+        );
+        performAutoSwitch();
+      }
+    } else {
+      if (autoSwitchState.cycleCount >= LARGE_GROUP_CYCLES) {
+        console.log(
+          `Auto-switch: Large group cycle limit reached for ${groupNames[currentGroupIndex]} (${autoSwitchState.cycleCount} cycles)`
+        );
+        performAutoSwitch();
+      }
+    }
+  }
+
+  function performAutoSwitch() {
+    if (isToggling || isManualOverride) return;
+
+    let nextGroupIndex = (currentGroupIndex + 1) % 3;
+
+    if (nextGroupIndex === currentGroupIndex) {
+      nextGroupIndex = (nextGroupIndex + 1) % 3;
+    }
+
+    if (
+      nextGroupIndex === autoSwitchState.lastSwitchedFrom &&
+      autoSwitchState.lastSwitchedFrom !== -1
+    ) {
+      nextGroupIndex = (nextGroupIndex + 1) % 3;
+    }
+
+    autoSwitchState.lastSwitchedFrom = currentGroupIndex;
+
+    console.log(
+      `AUTO-SWITCH: ${groupNames[currentGroupIndex]} → ${groupNames[nextGroupIndex]
+      } at ${new Date().toLocaleTimeString()}`
+    );
+
+    autoSwitchState.cycleCount = 0;
+
+    toggleGroup(nextGroupIndex, false);
+  }
+
+  function startAutoSwitchSystem() {
+    if (autoSwitchState.timer) {
+      clearInterval(autoSwitchState.timer);
+    }
+
+    autoSwitchState.startTime = Date.now();
+    autoSwitchState.cycleCount = 0;
+    autoSwitchState.isActive = true;
+
+    autoSwitchState.timer = setInterval(
+      checkAutoSwitch,
+      AUTO_SWITCH_INTERVAL
+    );
+
+    console.log(
+      `Auto-switch system started for ${groupNames[currentGroupIndex]
+      } at ${new Date().toLocaleTimeString()}`
+    );
+  }
+
+  function animate(timestamp) {
+    if (isToggling) {
+      animationId = requestAnimationFrame(animate);
+      return;
+    }
+
+    const cards = getCurrentGroupCards();
+
+    if (cards.length < 4) {
+      animationId = requestAnimationFrame(animate);
+      return;
+    }
+
+    if (!isPaused && lastTimestamp) {
+      const deltaTime = timestamp - lastTimestamp;
+      const movement = (ANIMATION_SPEED * deltaTime) / 16;
+
+      currentTransform -= movement;
+
+      const totalCards = cards.length;
+      const maxTransform =
+        -(totalCards * CARD_WIDTH - CARDS_VISIBLE * CARD_WIDTH) + LEFT_MARGIN;
+
+      if (currentTransform <= maxTransform) {
+        cycleCount++;
+        autoSwitchState.cycleCount++;
+
+        console.log(
+          `Completed cycle ${cycleCount}/${autoSwitchState.cycleCount} for ${groupNames[currentGroupIndex]
+          } group at ${new Date().toLocaleTimeString()}`
+        );
+
+        currentTransform = LEFT_MARGIN;
+      }
+
+      carouselTrack.style.transform = `translateX(${currentTransform}px)`;
+    }
+
+    lastTimestamp = timestamp;
+    animationId = requestAnimationFrame(animate);
+  }
+
+  function toggleGroup(groupIndex, isManual = false) {
+    if (isToggling) return;
+
+    if (groupIndex === currentGroupIndex) {
+      console.log(`Blocked switch to same group: ${groupNames[groupIndex]}`);
+      return;
+    }
+
+    isToggling = true;
+    console.log(
+      `Switching to ${groupNames[groupIndex]
+      } group (Manual: ${isManual}) at ${new Date().toLocaleTimeString()}`
+    );
+
+    autoSwitchState.isActive = false;
+    if (autoSwitchState.timer) {
+      clearInterval(autoSwitchState.timer);
+      autoSwitchState.timer = null;
+    }
+
+    if (manualOverrideTimer) {
+      clearTimeout(manualOverrideTimer);
+      manualOverrideTimer = null;
+    }
+
+    cycleCount = 0;
+    autoSwitchState.cycleCount = 0;
+
+    if (isManual) {
+      isManualOverride = true;
+      console.log(
+        `Manual override activated for 6 seconds at ${new Date().toLocaleTimeString()}`
+      );
+      manualOverrideTimer = setTimeout(() => {
+        isManualOverride = false;
+        console.log(
+          `Manual override expired at ${new Date().toLocaleTimeString()}`
+        );
+      }, 6000);
+    } else {
+      isManualOverride = false;
+    }
+
+    groups.forEach((group, index) => {
+      group.style.display = index === groupIndex ? "flex" : "none";
+    });
+
+    updateButtonStates(groupIndex);
+
+    currentGroupIndex = groupIndex;
+
+    const cards = getCurrentGroupCards();
+    if (cards.length < 4) {
+      const containerWidth = CARDS_VISIBLE * CARD_WIDTH;
+      const contentWidth = cards.length * CARD_WIDTH;
+      const centerOffset = (containerWidth - contentWidth) / 2;
+      currentTransform = LEFT_MARGIN + centerOffset;
+      console.log(
+        `Centering ${cards.length} cards for ${groupNames[groupIndex]} with offset: ${centerOffset}`
+      );
+    } else {
+      currentTransform = LEFT_MARGIN;
+    }
+
+    setTimeout(() => {
+      try {
+        resetCarousel();
+        setupInfiniteCarousel();
+        setupHoverListeners();
+
+        setTimeout(() => {
+          startAutoSwitchSystem();
+          console.log(
+            `${groupNames[groupIndex]
+            } group ready for auto-switching at ${new Date().toLocaleTimeString()}`
+          );
+        }, 200);
+
+        console.log(
+          `${groupNames[groupIndex]
+          } group displayed successfully at ${new Date().toLocaleTimeString()}`
+        );
+      } catch (error) {
+        console.error("Error in delayed setup:", error);
+      }
+      isToggling = false;
+    }, 100);
+  }
+
+  function resetCarousel() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+
+    isPaused = false;
+    lastTimestamp = 0;
+
+    carouselTrack.style.transition = "none";
+    carouselTrack.style.transform = `translateX(${currentTransform}px)`;
+
+    setTimeout(() => {
+      carouselTrack.style.transition = "";
+      lastTimestamp = 0;
+      animationId = requestAnimationFrame(animate);
+    }, 50);
+  }
+
+  function updateButtonStates(activeIndex) {
+    buttons.forEach((btn, index) => {
+      if (index === activeIndex) {
+        btn.classList.add("btn-active");
+        btn.classList.remove("btn-inactive");
+      } else {
+        btn.classList.add("btn-inactive");
+        btn.classList.remove("btn-active");
+      }
+    });
+  }
+
+  function setupHoverListeners() {
+    try {
+      const currentGroup = groups[currentGroupIndex];
+      const cards = currentGroup.querySelectorAll(".card:not(.clone-slide)");
+
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          isPaused = true;
+          console.log(
+            `Animation paused on hover for ${groupNames[currentGroupIndex]} (auto-switch continues)`
+          );
+        });
+        card.addEventListener("mouseleave", () => {
+          isPaused = false;
+          console.log(
+            `Animation resumed after hover for ${groupNames[currentGroupIndex]}`
+          );
+        });
+      });
+    } catch (error) {
+      console.error("Error setting up hover listeners:", error);
+    }
+  }
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      if (!isToggling) {
+        console.log(
+          `Manual click on ${groupNames[index]
+          } button at ${new Date().toLocaleTimeString()}`
+        );
+        toggleGroup(index, true);
+      }
+    });
+  });
+
+  function init() {
+    try {
+      console.log(
+        `Initializing 3-region carousel system at ${new Date().toLocaleTimeString()}...`
+      );
+
+      currentGroupIndex = 0;
+      cycleCount = 0;
+      autoSwitchState.lastSwitchedFrom = -1;
+
+      groups.forEach((group, index) => {
+        group.style.display = index === 0 ? "flex" : "none";
+      });
+      updateButtonStates(0);
+
+      setTimeout(() => {
+        try {
+          const cards = getCurrentGroupCards();
+          console.log(
+            `Initial group (${groupNames[0]}) has ${cards.length} cards`
+          );
+
+          if (cards.length < 4) {
+            const containerWidth = CARDS_VISIBLE * CARD_WIDTH;
+            const contentWidth = cards.length * CARD_WIDTH;
+            const centerOffset = (containerWidth - contentWidth) / 2;
+            currentTransform = LEFT_MARGIN + centerOffset;
+            console.log(
+              `Centering initial group with offset: ${centerOffset}`
+            );
+          } else {
+            currentTransform = LEFT_MARGIN;
+          }
+
+          setupInfiniteCarousel();
+          setupHoverListeners();
+
+          carouselTrack.style.transform = `translateX(${currentTransform}px)`;
+          lastTimestamp = 0;
+          animationId = requestAnimationFrame(animate);
+
+          setTimeout(() => {
+            startAutoSwitchSystem();
+          }, 500);
+
+          console.log(
+            `3-region carousel initialized successfully at ${new Date().toLocaleTimeString()}`
+          );
+        } catch (initError) {
+          console.error("Init error:", initError);
+        }
+      }, 200);
+    } catch (error) {
+      console.error("Initialization error:", error);
+    }
+  }
+
+  window.addEventListener("beforeunload", () => {
+    if (autoSwitchState.timer) {
+      clearInterval(autoSwitchState.timer);
+    }
+    if (manualOverrideTimer) {
+      clearTimeout(manualOverrideTimer);
+    }
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", init);
+
+  (function () {
+    function fitStateSVG(svg) {
+      try {
+        var p = svg.querySelector("path");
+        if (!p) return;
+        var b = p.getBBox();
+        var pad = Math.max(b.width, b.height) * 0.12;
+        var minX = b.x - pad,
+          minY = b.y - pad,
+          w = b.width + pad * 2,
+          h = b.height + pad * 2;
+        svg.setAttribute("viewBox", [minX, minY, w, h].join(" "));
+        svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      } catch (e) {
+        console.warn("fitStateSVG error", e);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".state-map").forEach(fitStateSVG);
+    });
+  })();
+</script>
+
+</html>
